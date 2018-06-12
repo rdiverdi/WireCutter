@@ -20,7 +20,7 @@
 #define TICKS_PER_REV 1000
 #define ENC_WHEEL_R 1 //inches
 
-#define SPOOL_CUTOFF_LEN 18 //inches
+#define SPOOL_CUTOFF_LEN 24 //inches
 
 void pin_setup(){
   pinMode(KNOB_PIN_1, INPUT_PULLUP);

@@ -103,7 +103,7 @@ bool activate_brake(){
   if (sub_state_change){
     digitalWrite(BRAKE_PIN, HIGH);
     brake_start_t = millis();
-    sub_state_change = false;
+    //sub_state_change = false;
   }
   if (millis() - brake_start_t > BRAKE_TIME){
     digitalWrite(BRAKE_PIN, LOW);

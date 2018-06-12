@@ -44,6 +44,11 @@ public:
           length = len_to_ticks(keypresses.toFloat(), units);
           display.set_len(ticks_to_len(length, units));
           send_msg(req_target_len, length);
+
+          use_spool = (length > len_to_ticks(SPOOL_CUTOFF_LEN, in));
+          send_msg(req_spool, int(use_spool));
+          display.set_spool(use_spool);
+
           if (input=='\n') change_state(main_screen);
         }
         else if (input=='\n' && !edit){
