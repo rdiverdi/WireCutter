@@ -83,3 +83,14 @@ private:
   long _off_t = 0;
   bool _timed = false;
 };
+
+void set_backlight(byte r, byte g, byte b){
+  byte num_pixels = 6;
+  Adafruit_NeoPixel pixels = Adafruit_NeoPixel(num_pixels, NEOPIXEL_PIN, NEO_GRB + NEO_KHZ800);
+  pixels.begin();
+  for(int i=0; i<num_pixels; i++){
+    pixels.setPixelColor(i, pixels.Color(r, g, b));
+  }
+  pixels.show();
+}
+

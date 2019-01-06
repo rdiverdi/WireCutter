@@ -1,6 +1,6 @@
-
 #include <Encoder.h>
 #include <Wire.h>
+#include <Adafruit_NeoPixel.h>
 #include "config.h"
 #include "helper_funcs.h"
 #include "states.h"
@@ -52,6 +52,7 @@ void setup() {
   keypad.setup();
   pin_setup();
   zero_light.on();
+  set_backlight(0, 255, 255);
   speaker.done_tone();
 }
 

@@ -13,7 +13,8 @@
 #define CUT_LED 9
 #define TOGGLE_PIN 10
 #define TOGGLE_LED 11
-#define PEDAL_PIN 5
+#define PEDAL_PIN 13
+#define NEOPIXEL_PIN 5
 
 #define SPEAKER_PIN 12
 
