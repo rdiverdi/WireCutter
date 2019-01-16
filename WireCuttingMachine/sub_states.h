@@ -89,6 +89,7 @@ bool cut_wire(){
   else debounce_count=0;
   if (cut_done && !cur_val) cut_done=false;
   if (!cut_done && cur_val){
+    analogWrite(CUT_MOTOR_PIN, 0);
     cut_done = true;
     reset_encoder();
     send_msg("CUT_DONE");

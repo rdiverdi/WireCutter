@@ -208,11 +208,7 @@ int spool_control(cmd_msg msg) {
     break;
   case cut:
     if (cut_wire()){
-      sub_state = change_sub_state(move_len);
-      count ++;
-      if (count >= desired_num){
-        send_msg("DONE");
-      }
+      send_msg("DONE");
       return change_state(manual);
     }
     break;

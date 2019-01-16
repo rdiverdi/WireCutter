@@ -12,8 +12,8 @@
 #define BRAKE_TIME 50 // time to hold solenoid open (ms)
 
 #define KICKER_SERVO_PIN 9
-#define KICKER_POS_CLOSED 150
-#define KICKER_POS_OPEN 100
+#define KICKER_POS_CLOSED 100
+#define KICKER_POS_OPEN 150
 #define KICKER_SERVO_TIME 300 // time for servo to reach position (ms)
 
 #define CUT_MOTOR_PIN 11
