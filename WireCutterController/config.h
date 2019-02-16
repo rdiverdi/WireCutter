@@ -19,7 +19,7 @@
 #define SPEAKER_PIN 12
 
 #define TICKS_PER_REV 1600
-#define ENC_WHEEL_D 0.995 //inches
+#define ENC_WHEEL_D 0.998 //inches
 
 #define SPOOL_CUTOFF_LEN 24 //inches
 

@@ -46,7 +46,7 @@ class DCmotor{
   long int accum=0;
   long int last_err=0;
 
-  long int MotorControl(long int target, long int current){
+  long int MotorControl(long int target, long int current, int offset=0){
     long int err = target-current;
     if (I!=0){
       accum += err;
@@ -58,7 +58,7 @@ class DCmotor{
       deriv = (last_err - err)*1000000./_control_dt;
     }
     _control_last_time = _now;
-    float speed = (P*err + I*accum - D*deriv);
+    float speed = (P*err + I*accum - D*deriv)+offset;
     delayMicroseconds(500);
     last_err = err;
     setSpeed(speed);

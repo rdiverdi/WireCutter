@@ -107,7 +107,7 @@ int manual_control(cmd_msg msg){
   return manual;
 }
 
-
+int offset=0;
 int noSpool_control(cmd_msg msg) {
   if (!encoder_zeroed){
     stop();
@@ -120,6 +120,7 @@ int noSpool_control(cmd_msg msg) {
   }
   if (state_change){
     count = 0;
+    offset = 0;
     M1.MotorControlReset();
     long int current_reading = mainEnc.read();
     long int err = target-current_reading;
@@ -138,10 +139,15 @@ int noSpool_control(cmd_msg msg) {
     }
     break;
   case move_len:
-    if (!check_for_movement()){
+    int stall_t;
+    stall_t = get_stall_time();
+    if (stall_t == -1){
       return manual;
     }
-    if (wire_control(M1)){
+    if (stall_t > 500){
+      offset = (stall_t - 400)/100;
+    }
+    if (wire_control(M1, offset)){
       sub_state = change_sub_state(cut);
       send_msg(req_enc_val, mainEnc.read());
     }
@@ -172,6 +178,7 @@ int spool_control(cmd_msg msg) {
   }
   if (state_change){
     count = 0;
+    offset = 0;
     M2.MotorControlReset();
     long int current_reading = mainEnc.read();
     long int err = target-current_reading;
@@ -190,10 +197,15 @@ int spool_control(cmd_msg msg) {
     }
     break;
   case move_len:
-    if (!check_for_movement()){
+    int stall_t;
+    stall_t = get_stall_time();
+    if (stall_t == -1){
       return manual;
     }
-    if (wire_control(M2)){
+    if (stall_t > 500){
+      offset = (stall_t - 400)/100;
+    }
+    if (wire_control(M2, offset)){
       sub_state = change_sub_state(activate_brakes);
     }
     break;

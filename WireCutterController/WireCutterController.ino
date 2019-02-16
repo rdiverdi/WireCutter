@@ -114,7 +114,7 @@ bool standard_controls() {
   if (stop_btn.press()){ send_msg(req_stop); any_press=true;}
   if (zero_btn.press()){ send_msg(req_encoder_zero); any_press=true;}
   if (toggle_btn.press()){ send_msg(req_toggle_kicker,2); any_press=true;}
-  if (jog_kicker_btn.press()){ send_msg(req_kicker_motor_speed,10);}
+  if (jog_kicker_btn.press()){ send_msg(req_kicker_motor_speed,25);}
   if (jog_kicker_btn.release()){ send_msg(req_kicker_motor_speed,0);}
   if (cut_btn.press()){ send_msg(req_cut); any_press=true;}
   if (pedal_btn.press()){ send_msg(req_spool_motor_speed,10); any_press=true;}

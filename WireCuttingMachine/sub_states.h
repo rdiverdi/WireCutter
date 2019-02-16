@@ -27,30 +27,36 @@ bool stop(){
 
 long wire_check_t;
 long wire_check_enc;
-bool check_for_movement(){
+int get_stall_time(){
+  // return time since last movement (ms)
   long current_reading = mainEnc.read();
   if (sub_state_change){
+    // first reading
     sub_state_change = false;
     wire_check_t = millis();
     wire_check_enc = current_reading;
+    return 0; // assume no time since last reading
   }
-  // check for movement every two seconds
+  // check for movement
   long t_now = millis();
-  if (t_now - wire_check_t > 2000){
-    if (current_reading == wire_check_enc){
-      stop();
-      send_msg(throw_err, 103);
-      return false;
-    }
+  if (current_reading != wire_check_enc){
+    // sensed movement
     wire_check_t = t_now;
     wire_check_enc = current_reading;
+    return 0;
   }
-  return true;
+  int stall_t = t_now - wire_check_t;
+  if (stall_t > 2000){
+    stop();
+    send_msg(throw_err, 103);
+    return -1; // return error, stalled too long
+  }
+  return stall_t;
 }
 
-bool wire_control(DCmotor &motor){
+bool wire_control(DCmotor &motor, int offset){
   long int current_reading = mainEnc.read();
-  long int err = motor.MotorControl(target, current_reading);
+  long int err = motor.MotorControl(target, current_reading, offset);
   if (err > TICKS_THRESHOLD){
     t_done = millis();
     return false;

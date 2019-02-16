@@ -21,14 +21,14 @@
 
 #define TICKS_THRESHOLD 2
 
-#define M1_P 0.02
-#define M1_D 0.0005
-#define M1_deadzone 65
+#define M1_P 0.022
+#define M1_D 0.02
+#define M1_deadzone 11
 #define M1_MAX_ACCEL 100
 
-#define M2_P 0.3
-#define M2_D 0
-#define M2_deadzone 0
+#define M2_P 0.022
+#define M2_D .02
+#define M2_deadzone 11
 #define M2_MAX_ACCEL 100
 
 void pin_setup(){
