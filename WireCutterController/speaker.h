@@ -69,8 +69,8 @@ private:
 
 
   void slide(int start_note, int end_note, long time_ms){
-    long start_t = micros();
-    long now = start_t;
+    unsigned long start_t = micros();
+    unsigned long now = start_t;
     while (now-start_t < 1000*time_ms){
       tone(8, (end_note-start_note)*(now-start_t)/(1000*time_ms) + start_note);
       now = micros();

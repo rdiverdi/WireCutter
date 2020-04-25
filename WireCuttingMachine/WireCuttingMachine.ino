@@ -20,7 +20,7 @@ long int target = 0;
 int desired_num = 1;
 int count = 0;
 
-long last_tick;
+unsigned long last_tick;
 
 bool kicker_active = false;
 

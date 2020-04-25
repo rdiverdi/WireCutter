@@ -14,7 +14,7 @@ int change_sub_state(int state){
   return state;
 }
 
-long t_done = 0;
+unsigned long t_done = 0;
 int settle_time = 50;
 
 bool stop(){
@@ -25,7 +25,7 @@ bool stop(){
   return true;
 }
 
-long wire_check_t;
+unsigned long wire_check_t;
 long wire_check_enc;
 int get_stall_time(){
   // return time since last movement (ms)
@@ -38,7 +38,7 @@ int get_stall_time(){
     return 0; // assume no time since last reading
   }
   // check for movement
-  long t_now = millis();
+  unsigned long t_now = millis();
   if (current_reading != wire_check_enc){
     // sensed movement
     wire_check_t = t_now;
@@ -104,7 +104,7 @@ bool cut_wire(){
   return false;
 }
 
-long brake_start_t;
+unsigned long brake_start_t;
 
 bool activate_brake(){
   if (sub_state_change){
@@ -118,7 +118,7 @@ bool activate_brake(){
   }
 }
 
-long kicker_start_t;
+unsigned long kicker_start_t;
 
 bool release_kicker(){
   if (!kicker_active) return true;

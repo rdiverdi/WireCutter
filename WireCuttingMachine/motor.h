@@ -84,11 +84,11 @@ class DCmotor{
 
   int _pwm_pin;
   int _dir_pin;
-  long _last_time;
-  long _now;
-  long _control_last_time;
-  long _control_dt;
-  long _dt;
+  unsigned long _last_time;
+  unsigned long _now;
+  unsigned long _control_last_time;
+  unsigned long _control_dt;
+  unsigned long _dt;
   float _speed = 0;
   float _req_speed = 0;
 

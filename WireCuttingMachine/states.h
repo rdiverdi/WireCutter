@@ -13,7 +13,7 @@ int change_state(int state){
 
 bool dist_control = false;
 long man_target = 0;
-long dist_start_t = 0;
+unsigned long dist_start_t = 0;
 
 int manual_control(cmd_msg msg){
   if (state_change){
